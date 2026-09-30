@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Camera Lab | Image Quality Analysis</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">◉</span><div><strong>Camera Lab</strong><small>IMAGE QUALITY WORKSPACE</small></div></div>
+      <div class="top-actions"><span class="privacy-pill"><span class="live-dot"></span>Local image analysis</span><button id="uploadButton" class="button subtle">↑&nbsp; Open image</button><input id="fileInput" type="file" accept="image/*,.bmp" hidden><button id="analyzeButton" class="button primary">▶&nbsp; Analyze</button></div>
+    </header>
+
+    <div class="main-grid">
+      <aside class="sidebar">
+        <div class="side-heading">TESTS <span>07</span></div>
+        <nav id="testNav" aria-label="Image quality tests"></nav>
+      </aside>
+
+      <main class="workspace">
+        <section class="page-intro"><div><div class="eyebrow" id="categoryLabel">ISO 12233 CHART · 01 / 07</div><h1 id="testTitle">Resolution <span>Spatial frequency response</span></h1><p id="testDescription"></p></div><span id="chartBadge" class="chart-badge">ISO 12233</span></section>
+        <section class="viewer-card">
+          <div class="viewer-head"><div class="viewer-title"><span class="viewer-icon">▣</span><div><strong id="imageName">—</strong><small id="imageMeta">Waiting for image</small></div></div><div class="viewer-tools"><button id="zoomOut" class="icon-button" title="Zoom out">−</button><span id="zoomLabel">100%</span><button id="zoomIn" class="icon-button" title="Zoom in">＋</button><button id="fitButton" class="icon-button fit" title="Fit to view">⤢</button></div></div>
+          <div id="canvasStage" class="canvas-stage"><div id="canvasWrap" class="canvas-wrap"><canvas id="imageCanvas" aria-label="Image with measurement overlays"></canvas></div><div id="loading" class="stage-message">Loading image…</div></div>
+          <div class="viewer-foot"><span id="interactionHint">Drag to select a test region</span><span id="cursorReadout">R: —　G: —　B: —　X: —　Y: —</span></div>
+        </section>
+        <div class="workspace-foot"><span class="live-dot"></span><span id="statusText">Ready</span><span class="spacer"></span><button id="resetButton" class="text-button">Reset selection</button></div>
+      </main>
+
+      <aside class="results-panel">
+        <div class="panel-top"><div><div class="eyebrow">MEASUREMENT</div><h2>Results</h2></div><span id="resultState" class="state-pill">Pending</span></div>
+        <div id="resultContent" class="result-content"></div>
+        <div class="panel-bottom"><button id="exportButton" class="button outline" disabled>↓&nbsp; Export JSON results</button><p>All calculations run in your browser. Images are not uploaded.</p></div>
+      </aside>
+    </div>
+  </div>
+  <script src="distortion.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
